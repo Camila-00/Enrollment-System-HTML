@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XYZ University Enrollment System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-image: linear-gradient(rgb(246, 241, 178), rgb(249, 200, 87));
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    form {
+      width: 400px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="button"],
+    input[type="reset"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #3d32cf;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="button"]:hover,
+    input[type="reset"]:hover {
+      background-color: #3d32cf;
+    }
+
+    input[type="text"][readonly] {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+ </marqueebehavior><h1>XYZ University Enrollment System</h1>
+  <marquee behavior="scroll" direction="left" scrollamount="12"><h2>"Unlocking Potential, Shaping Futures"</h2></marquee>
+
+  <form>
+    <label for="studentNumber">Student Number:</label>
+    <input type="text" id="studentNumber" name="studentNumber">
+
+    <label for="studentName">Student Name:</label>
+    <input type="text" id="studentName" name="studentName">
+
+    <label for="course">Course:</label>
+    <select id="course" name="course">
+        <option value="" disabled selected hidden>Course</option>
+      <option value="course1">Computer Science</option>
+      <option value="course2">Multimedia Arts</option>
+      <option value="course3">Culinary</option>
+      
+    </select>
+
+    <label for="college">College:</label>
+    <select id="college" name="college">
+        <option value="" disabled selected hidden>College</option>
+      <option value="college1">CSCS</option>
+      <option value="college2">CEAT</option>
+      <option value="college3">CTHM</option>
+     
+    </select>
+
+    <label for="units">Number of Units Enrolled:</label>
+    <input type="number" id="units" name="units">
+
+    <label for="rate">Rate per Unit:</label>
+    <input type="number" id="rate" name="rate">
+
+    <input type="button" value="Calculate Tuition Fee" onclick="calculateTuitionFee()">
+    
+
+    <label for="tuitionFee">Tuition Fee:</label>
+    <input type="text" id="tuitionFee" name="tuitionFee" readonly>
+
+    <label for="deductions">Deductions:</label>
+    <input type="text" id="deductions" name="deductions" readonly>
+
+    <label for="totalTuitionFee">Total Tuition Fee:</label>
+    <input type="text" id="totalTuitionFee" name="totalTuitionFee" readonly>
+    <input type="reset" value="Reset">
+  </form>
+
+  <script>
+    function calculateTuitionFee() {
+      var units = parseFloat(document.getElementById("units").value);
+      var rate = parseFloat(document.getElementById("rate").value);
+
+      var tuitionFee = units * rate;
+
+      var deductions = 0;
+      if (units > 21) {
+        deductions = tuitionFee * 0.03;
+      } else if (units < 21) {
+        deductions = tuitionFee * 0.015;
+      }
+
+      var totalTuitionFee = tuitionFee - deductions;
+
+      document.getElementById("tuitionFee").value = tuitionFee.toFixed(2);
+      document.getElementById("deductions").value = deductions.toFixed(2);
+      document.getElementById("totalTuitionFee").value = totalTuitionFee.toFixed(2);
+    }
+  </script>
+</body>
+</html>
